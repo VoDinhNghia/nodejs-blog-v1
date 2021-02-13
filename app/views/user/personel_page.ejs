@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>personel_page</title>
+    <%- include("./header") %>
+</head>
+
+<body>
+
+    <%- include("./menu") %>
+        <div class="container" style="margin-top:70px">
+            <div class="row">
+                <%- include("./content_left_personel") %>
+                    <div class="col-sm-8">
+                        <% if(data.length){ 
+                            for(var i = data.length -1;i >= 0;i--) { %>
+                            <h3>
+                                <%= data[i].title %>
+                                    <span class="badge badge-danger"><a href="#"> <button type="button" class="btn btn-danger">Edit post</button></a></span>
+                            </h3>
+                            <h5>
+                                <%= data[i].date_post %>
+
+                                    <% if(data[i].privacy != 1) {%>
+                                        <button type="button" class="btn btn-success">publish</button>
+                                        <% } else {%>
+                                            <button type="button" class="btn btn-success">private</button>
+                                            <% }%>
+
+                            </h5>
+                            <% if(data[i].image != '') {%>
+                                <div class="fakeimg"><img src="<%= data[i].image %>" alt="image" height="290px"></div>
+                                <% }%>
+                                    <br><br>
+                                    <p>
+                                        <%= data[i].content %>
+                                    </p>
+                                    <br>
+                                    <span>
+                            <div class="btn-group btn-group-sm float-left" role="group" aria-label="Basic example">
+                                <p>1 like</p>
+                            </div>
+                            <div class="btn-group btn-group-sm float-right" role="group" aria-label="Basic example">
+                                <a href="#"></a> <button type="button" class="btn btn-success">Like</button></a>
+                                <a href="#"></a><button type="button" class="btn btn-success">Commands</button></a>
+                                <a href="#"></a><button type="button" class="btn btn-success">Share</button></a>
+                            </div>
+                        </span>
+                                    <br><br>
+                                    <p>Nguyen Van A: right</p>
+
+                                    <br><br>
+                                    <hr>
+                                    <% } } else{ %>
+                                        <p>Not found post</p>
+
+                                        <% }; %>
+
+                    </div>
+
+            </div>
+        </div>
+        <%- include("./footer") %>
+</body>
+
+</html>

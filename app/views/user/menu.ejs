@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-sm bg-info navbar-dark text-white fixed-top">
+    <a class="navbar-brand" href="/home">Web Science |</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/new_post">New post</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/personel_page">Personal page</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">List author</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+            </li>
+        </ul>
+
+    </div>
+    <form action="/search" method="POST" class="search-btn">
+        <input type="text">
+        <button type="submit" class="btn btn-outline-success bg-white">Search</button>
+    </form>
+</nav>
