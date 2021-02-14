@@ -118,3 +118,15 @@ exports.update_info_personel = async(req, res) => {
         }
     });
 }
+
+exports.comments = async(req, res) => {
+    let instert_comments = await db.query_insert('share_like_comment', {
+        ID_post: req.body.id_post,
+        ID_user: req.session.ID,
+        comment: req.body.content_comment,
+        type: 1,
+        status_like: 0,
+        date_implement: dateFormat(new Date(), "dd mm yyyy HH:MM:ss")
+    });
+    res.redirect(`/info_post/${req.body.id_post}`);
+}

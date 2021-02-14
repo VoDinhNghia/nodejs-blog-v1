@@ -25,7 +25,7 @@
                                 <div class="comment-text w-100">
                                     <h6 class="font-medium text-info">
                                         <span class="text-danger"><%= data[i].date_post %></span>
-                                        <a href="" class="float-right"><img src="<%= data[i].avatar %>" alt="user" width="25" height="25" class="rounded-circle"> <%= data[i].name %></a>
+                                        <a href="/info_personel/<%= data[i].ID_user %>" class="float-right"><img src="<%= data[i].avatar %>" alt="user" width="25" height="25" class="rounded-circle"> <%= data[i].name %></a>
                                     </h6>
                                 </div>
                             </div><br>
@@ -42,14 +42,14 @@
                             <div class="btn-group btn-group-sm float-left text-danger" role="group" aria-label="Basic example">
                                 <% var count_like = 0;
                                    for(let j = 0; j < data_s_l_c.length; j++){
-                                       if(data_s_l_c[j].ID_post == data[i].ID){
+                                       if(data_s_l_c[j].ID_post == data[i].ID && data_s_l_c[j].type == 0){
                                            count_like = count_like+1;
                                        }
                                    } %>
-                                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#info_userlike">
+                                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#info_userlike<%= data[i].ID %>">
                                     <%- count_like %> like
                                     </button> <br>
-                                    <div class="modal" id="info_userlike" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal" id="info_userlike<%= data[i].ID %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                                 <div class="modal-header">
@@ -60,16 +60,15 @@
                     </div>
                     <div class="modal-body">
                         <% for(let j = 0; j < data_s_l_c.length; j++){
-                            if(data_s_l_c[j].ID_post == data[i].ID){ %>
-                            <a href="/info_personel/<%= data_s_l_c[i].ID_user %>">
-                                <%= data_s_l_c[i].name %> <br>
+                            if(data_s_l_c[j].ID_post == data[i].ID && data_s_l_c[j].type == 0){ %>
+                            <a href="/info_personel/<%= data_s_l_c[j].ID_user %>">
+                                <%= data_s_l_c[j].name %> <br>
                             </a>
                             <%    }
                         } %>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save</button>
                     </div>
             </div>
         </div>
@@ -93,13 +92,21 @@
         </form><br><br>
         <!-- Comment Row -->
         <div class="d-flex flex-row comment-row m-t-0">
-            <a href="">
-                <div class="p-2"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1574583336/AAA/4.jpg" alt="user" width="50" class="rounded-circle"></div>
-            </a>
-            <div class="comment-text w-100">
-                <h6 class="font-medium text-info"><a href="">James Thomas</a> <span class="text-muted float-right">April 14, 2019</span></h6> <span class="m-b-15 d-block">This is awesome website. I would love to comeback again. </span>
-            </div>
+            <% for(let j = 0; j < data_s_l_c.length; j++){
+                            if(data_s_l_c[j].ID_post == data[i].ID && data_s_l_c[j].type == 1){ %>
+                <a href="/info_personel/<%= data_s_l_c[j].ID_user %>">
+                    <div class="p-2"><img src="<%= data_s_l_c[j].avatar %>" alt="user" width="30" height="30" class="rounded-circle"></div>
+                </a>
+                <div class="comment-text w-100">
+                    <h6 class="font-medium text-info">
 
+                        <a href="/info_personel/<%= data_s_l_c[j].ID_user %>">
+                            <%= data_s_l_c[j].name %>
+                        </a> <span class="text-muted float-right"><%= data_s_l_c[j].date_implement %></span></h6> <span class="m-b-15 d-block"><%= data_s_l_c[j].comment %></span>
+
+                </div>
+                <%    }
+                        } %>
         </div>
         <br>
         <hr style="border: 1px solid green">

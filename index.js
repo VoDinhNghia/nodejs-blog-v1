@@ -41,6 +41,7 @@ app.post('/signup', router_method_post.signup);
 app.post('/getpass', router_method_post.getpass);
 app.post('/save_new_post', router_method_post.save_new_post);
 app.post('/update_info_personel', router_method_post.update_info_personel);
+app.post('/comments', router_method_post.comments);
 
 //error: page not found 404/
 app.use((req, res, next) => {
