@@ -86,6 +86,31 @@ exports.save_new_post = async(req, res) => {
     });
 }
 
+exports.edit_post = async(req, res) => {
+    upload.upload(req, res, async(err) => {
+        if (err) { res.send({ msg: err }); } else {
+            if (req.body.privacy == 'publish') { privacy = 0 } else { privacy = 1 }
+            if (req.file != undefined) {
+                file_image = `/images/uploads/${req.file.filename}`;
+                let save_edit_post = await db.query_update('listpost', { ID: req.body.id_post }, {
+                    title: req.body.title_post,
+                    content: req.body.content_post,
+                    image: file_image,
+                    privacy: privacy
+                });
+                res.redirect('/personel_page');
+            } else {
+                let save_edit_post = await db.query_update('listpost', { ID: req.body.id_post }, {
+                    title: req.body.title_post,
+                    content: req.body.content_post,
+                    privacy: privacy
+                });
+                res.redirect('/personel_page');
+            }
+        }
+    });
+}
+
 exports.update_info_personel = async(req, res) => {
     upload.avatar_upload(req, res, async(err) => {
         if (err) {

@@ -5,6 +5,7 @@ const nodemailer = require('nodemailer');
 const dateFormat = require('dateformat');
 const upload = require('./upload_file');
 const crypto = require('./crypto');
+const { as } = require("../config/db");
 
 //method get
 
@@ -129,7 +130,20 @@ exports.like = async(req, res) => {
 
 exports.edit_post = async(req, res) => {
     if (!req.session.username || req.session.ID == 3) { res.redirect('/'); } else {
-        console.log(req.params.id);
+        let user_info = await db.query_select('user', { ID: req.session.ID });
+        let data_post = await db.query_select('listpost', { ID: req.params.id });
+        res.render('user/edit_post', {
+            data: user_info,
+            data_post: data_post
+        });
+    }
+}
+
+exports.delete_post = async(req, res) => {
+    if (!req.session.username || req.session.ID == 3) { res.redirect('/') } else {
+        let del_s_l_c = await db.query_delete('share_like_comment', { ID_post: req.params.id });
+        let del_post = await db.query_delete('listpost', { ID: req.params.id });
+        res.redirect('/personel_page')
     }
 }
 

@@ -15,6 +15,10 @@ exports.query_insert = async(table, json_insert) => {
     let arr_value = await knex(table).insert(json_insert);
 }
 
+exports.query_delete = async(table, json_where) => {
+    let delete_post = await knex(table).where(json_where).del();
+}
+
 exports.query_update = async(table, json_where, json_update) => {
     let arr_value = await knex(table).where(json_where).update(json_update)
 }
