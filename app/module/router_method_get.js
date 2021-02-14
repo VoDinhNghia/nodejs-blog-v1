@@ -30,11 +30,13 @@ exports.home = async(req, res) => {
         var numPages = parseInt(Math.ceil(numRows / numPerPage));
         let list_10_new_post = await db.query_select_limit('user', 'listpost', 'user.ID', 'listpost.ID_user', { 'listpost.privacy': 0 }, 10, 0, 'listpost.date_post', 'DESC');
         let list_all_post = await db.query_select_limit('user', 'listpost', 'user.ID', 'listpost.ID_user', { 'listpost.privacy': 0 }, numPerPage, 0, 'listpost.date_post', 'DESC');
+        let data_s_l_c = await db.join_2_table('user', 'share_like_comment', 'user.ID', 'share_like_comment.ID_user', { 'share_like_comment.status_like': 0 });
         res.render('user/home', {
             username: req.session.username,
             data: list_all_post,
             data_10_post: list_10_new_post,
-            numPages: numPages
+            numPages: numPages,
+            data_s_l_c: data_s_l_c
         });
     }
 }
@@ -52,11 +54,13 @@ exports.pagination_page = async(req, res) => {
         var numPages = parseInt(Math.ceil(numRows / numPerPage));
         let list_10_new_post = await db.query_select_limit('user', 'listpost', 'user.ID', 'listpost.ID_user', { 'listpost.privacy': 0 }, 10, 0, 'listpost.date_post', 'DESC');
         let list_all_post = await db.query_select_limit('user', 'listpost', 'user.ID', 'listpost.ID_user', { 'listpost.privacy': 0 }, limit, skip, 'listpost.date_post', 'DESC');
+        let data_s_l_c = await db.join_2_table('user', 'share_like_comment', 'user.ID', 'share_like_comment.ID_user', { 'share_like_comment.status_like': 0 });
         res.render('user/home', {
             username: req.session.username,
             data: list_all_post,
             data_10_post: list_10_new_post,
-            numPages: numPages
+            numPages: numPages,
+            data_s_l_c: data_s_l_c
         });
     }
 }
@@ -69,6 +73,55 @@ exports.personel_page = async(req, res) => {
         res.render('user/personel_page', {
             data: data
         });
+    }
+}
+
+exports.info_post = async(req, res) => {
+    if (!req.session.username || req.session.ID == 3) { res.redirect('/') } else {
+        let list_10_new_post = await db.query_select_limit('user', 'listpost', 'user.ID', 'listpost.ID_user', { 'listpost.privacy': 0 }, 10, 0, 'listpost.date_post', 'DESC');
+        let data_s_l_c = await db.join_2_table('user', 'share_like_comment', 'user.ID', 'share_like_comment.ID_user', { 'share_like_comment.status_like': 0 });
+        let data_info_post = await db.join_2_table('user', 'listpost', 'user.ID', 'listpost.ID_user', { 'listpost.ID': req.params.id })
+        res.render('user/info_post', {
+            username: req.session.username,
+            data_10_post: list_10_new_post,
+            data: data_info_post,
+            data_s_l_c: data_s_l_c
+        });
+    }
+}
+
+exports.like = async(req, res) => {
+    if (!req.session.username || req.session.ID == 3) { res.redirect('/') } else {
+        let query = await db.query_select('share_like_comment', {
+            ID_post: req.params.id,
+            ID_user: req.session.ID,
+            type: 0
+        });
+        if (query.length > 0) {
+            if (query[0].status_like == 0) {
+                let query_update = await db.query_update('share_like_comment', {
+                    ID_post: req.params.id,
+                    ID_user: req.session.ID,
+                    type: 0
+                }, { status_like: 1 });
+            } else {
+                let query_update = await db.query_update('share_like_comment', {
+                    ID_post: req.params.id,
+                    ID_user: req.session.ID,
+                    type: 0
+                }, { status_like: 0 });
+            }
+        } else {
+            let insert = await db.query_insert('share_like_comment', {
+                ID_post: req.params.id,
+                ID_user: req.session.ID,
+                comment: 'like',
+                type: 0, //0: like, 1: comment, 2: share
+                status_like: 0, //0: like, 1: bo like
+                date_implement: dateFormat(new Date(), "dd mm yyyy HH:MM:ss")
+            })
+        }
+        res.redirect(`/info_post/${req.params.id}`);
     }
 }
 

@@ -35,8 +35,13 @@ exports.query_count = async(table, json_where) => {
 }
 
 exports.join_2_table = async(table1, table2, id_table1, id_table2, json_where) => {
-    let join_table = await knex.from(table1).innerJoin(table2, id_table1, id_table2).where(json_where);
-    return join_table
+    if (json_where == '') {
+        let join_table = await knex.from(table1).innerJoin(table2, id_table1, id_table2);
+        return join_table
+    } else {
+        let join_table = await knex.from(table1).innerJoin(table2, id_table1, id_table2).where(json_where);
+        return join_table
+    }
 }
 
 exports.query_select_andWhere = async(table, json_where, column, value) => {
