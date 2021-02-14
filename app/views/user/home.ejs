@@ -28,7 +28,7 @@
                                         <a href="/info_personel/<%= data[i].ID_user %>" class="float-right"><img src="<%= data[i].avatar %>" alt="user" width="25" height="25" class="rounded-circle"> <%= data[i].name %></a>
                                     </h6>
                                 </div>
-                            </div><br>
+                            </div>
                             <% if(data[i].image != '') {%>
                                 <div class="fakeimg"><img src="<%= data[i].image %>" alt="image" height="290px"></div>
                                 <br><br>
@@ -37,7 +37,7 @@
                                     <p>
                                         <%= data[i].content %>
                                     </p>
-                                    <br>
+
                                     <span>
                             <div class="btn-group btn-group-sm float-left text-danger" role="group" aria-label="Basic example">
                                 <% var count_like = 0;
