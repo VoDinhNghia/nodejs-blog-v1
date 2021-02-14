@@ -69,9 +69,11 @@ exports.personel_page = async(req, res) => {
     if (!req.session.username || req.session.ID == 3) {
         res.redirect('/');
     } else {
-        let data = await db.join_2_table('listpost', 'user', 'listpost.ID_user', 'user.ID', { 'user.ID': req.session.ID });
+        let data = await db.join_2_table('user', 'listpost', 'user.ID', 'listpost.ID_user', { 'user.ID': req.session.ID });
+        let data_s_l_c = await db.join_2_table('user', 'share_like_comment', 'user.ID', 'share_like_comment.ID_user', { 'share_like_comment.status_like': 0 });
         res.render('user/personel_page', {
-            data: data
+            data: data,
+            data_s_l_c: data_s_l_c
         });
     }
 }
@@ -122,6 +124,12 @@ exports.like = async(req, res) => {
             })
         }
         res.redirect(`/info_post/${req.params.id}`);
+    }
+}
+
+exports.edit_post = async(req, res) => {
+    if (!req.session.username || req.session.ID == 3) { res.redirect('/'); } else {
+        console.log(req.params.id);
     }
 }
 

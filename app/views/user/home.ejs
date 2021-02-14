@@ -91,9 +91,9 @@
             <button type="submit" class="btn btn-success float-right">Comments</button>
         </form><br><br>
         <!-- Comment Row -->
-        <div class="d-flex flex-row comment-row m-t-0">
-            <% for(let j = 0; j < data_s_l_c.length; j++){
-                            if(data_s_l_c[j].ID_post == data[i].ID && data_s_l_c[j].type == 1){ %>
+        <% for(let j = 0; j < data_s_l_c.length; j++){
+            if(data_s_l_c[j].ID_post == data[i].ID && data_s_l_c[j].type == 1){ %>
+            <div class="d-flex flex-row comment-row m-t-0">
                 <a href="/info_personel/<%= data_s_l_c[j].ID_user %>">
                     <div class="p-2"><img src="<%= data_s_l_c[j].avatar %>" alt="user" width="30" height="30" class="rounded-circle"></div>
                 </a>
@@ -105,34 +105,34 @@
                         </a> <span class="text-muted float-right"><%= data_s_l_c[j].date_implement %></span></h6> <span class="m-b-15 d-block"><%= data_s_l_c[j].comment %></span>
 
                 </div>
-                <%    }
+            </div>
+            <%    }
                         } %>
-        </div>
-        <br>
-        <hr style="border: 1px solid green">
-        <% } } else{ %>
-            <p>Not found post</p>
+                <br>
+                <hr style="border: 1px solid green">
+                <% } } else{ %>
+                    <p>Not found post</p>
 
-            <% }; %>
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                        <li class="page-item">
-                            <a class="page-link" href="#">
-                                <<</a>
-                        </li>
-                        <% for(var i = 0;i< numPages; i++) { %> <span id="p_nextpage">
+                    <% }; %>
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    <a class="page-link" href="#">
+                                        <<</a>
+                                </li>
+                                <% for(var i = 0;i< numPages; i++) { %> <span id="p_nextpage">
                                                             <li class="page-item"><a href="/pagination_page/<%= i+1%>" class="page-link">trang <%= i+1%></a>
                                                     </li></span>
 
-                            <% } %>
-                                <li class="page-item"><a class="page-link" href="#">>></a></li>
-                    </ul>
-                </nav>
+                                    <% } %>
+                                        <li class="page-item"><a class="page-link" href="#">>></a></li>
+                            </ul>
+                        </nav>
 
-                </div>
-                </div>
-                </div>
-                <%- include("./footer") %>
+                        </div>
+                        </div>
+                        </div>
+                        <%- include("./footer") %>
 </body>
 
 </html>

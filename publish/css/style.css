@@ -207,7 +207,7 @@ input:valid::-webkit-input-placeholder {
     border-radius: 10px;
 }
 
-#form_new_post h3 {
+#form_new_post h5 {
     color: green;
 }
 

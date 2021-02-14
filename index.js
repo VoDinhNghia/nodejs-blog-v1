@@ -34,6 +34,7 @@ app.get('/info_personel/:id', router_method_get.info_personel1);
 app.get('/pagination_page/:id', router_method_get.pagination_page);
 app.get('/info_post/:id', router_method_get.info_post);
 app.get('/like/:id', router_method_get.like);
+app.get('/edit_post/:id', router_method_get.edit_post);
 
 //method post
 app.post('/login-sucsses', router_method_post.login_sucsses);
