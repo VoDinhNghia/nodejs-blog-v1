@@ -197,3 +197,15 @@ exports.info_personel1 = async(req, res) => {
         });
     }
 }
+
+exports.list_author = async(req, res) => {
+    if (!req.session.username || req.session.ID == 3) { res.redirect('/') } else {
+        let list_10_new_post = await db.query_select_limit('user', 'listpost', 'user.ID', 'listpost.ID_user', { 'listpost.privacy': 0 }, 10, 0, 'listpost.date_post', 'DESC');
+        let info_user = await db.query_select('user', { level: 0 });
+        res.render('user/list_author', {
+            username: req.session.username,
+            data_10_post: list_10_new_post,
+            data_user: info_user
+        })
+    }
+}
