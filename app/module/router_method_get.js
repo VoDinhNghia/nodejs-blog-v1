@@ -173,13 +173,16 @@ exports.info_personel1 = async(req, res) => {
     if (!req.session.username || req.session.ID == 3) {
         res.redirect('/');
     } else {
-        let all_post = await db.query_select('listpost', { privacy: 0, ID_user: req.params.id });
-        let user_info = await db.query_select('user', { ID: req.params.id });
+        let data_s_l_c = await db.join_2_table('user', 'share_like_comment', 'user.ID', 'share_like_comment.ID_user', { 'share_like_comment.status_like': 0 });
+        let data = await db.join_2_table('user', 'listpost', 'user.ID', 'listpost.ID_user', {
+            'user.ID': req.params.id,
+            'listpost.privacy': 0
+        });
         let avatar = await db.join_2_table('user', 'manager_avatar', 'user.ID', 'manager_avatar.ID_user', { 'user.ID': req.params.id });
         res.render('user/info_personel', {
-            data: user_info,
-            data_post: all_post,
-            avatar: avatar
+            data: data,
+            avatar: avatar,
+            data_s_l_c: data_s_l_c
         });
     }
 }
