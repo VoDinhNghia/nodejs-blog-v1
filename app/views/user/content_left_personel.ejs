@@ -21,9 +21,11 @@
                                         <img class="d-block w-100" src="<%= data[0].avatar %>" alt="image" height="400px">
                                     </div>
                                     <% if(avatar.length){ 
-                                            for(var j = 1;j < avatar.length;j++) { %>
+                                            for(var j = 0; j < avatar.length;j++) { %>
                                         <div class="carousel-item">
+                                            <a href="/update_avatar/<%= avatar[j].ID %>">
                                             <img class="d-block w-100" src="<%= avatar[j].image_update %>" alt="image" height="400px">
+                                            </a>
                                         </div>
                                         <% } } else{ %>
                                             <p>Not found image</p>

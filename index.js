@@ -36,6 +36,7 @@ app.get('/info_post/:id', router_method_get.info_post);
 app.get('/like/:id', router_method_get.like);
 app.get('/edit_post/:id', router_method_get.edit_post);
 app.get('/delete_post/:id', router_method_get.delete_post);
+app.get('/update_avatar/:id', router_method_get.update_avatar);
 
 //method post
 app.post('/login-sucsses', router_method_post.login_sucsses);

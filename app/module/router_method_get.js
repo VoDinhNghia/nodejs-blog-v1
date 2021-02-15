@@ -81,6 +81,17 @@ exports.personel_page = async(req, res) => {
     }
 }
 
+exports.update_avatar = async(req, res) => {
+    if (!req.session.username || req.session.ID == 3) { res.redirect('/') } else {
+        let avatar = await db.query_select('manager_avatar', { ID: req.params.id });
+        let update_avatar = await db.query_update('user', { ID: avatar[0].ID_user }, {
+            avatar: avatar[0].image_update,
+            date_update: dateFormat(new Date(), "dd mm yyyy HH:MM:ss")
+        });
+        res.redirect('/personel_page')
+    }
+}
+
 exports.info_post = async(req, res) => {
     if (!req.session.username || req.session.ID == 3) { res.redirect('/') } else {
         let list_10_new_post = await db.query_select_limit('user', 'listpost', 'user.ID', 'listpost.ID_user', { 'listpost.privacy': 0 }, 10, 0, 'listpost.date_post', 'DESC');
