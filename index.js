@@ -38,6 +38,7 @@ app.get('/edit_post/:id', router_method_get.edit_post);
 app.get('/delete_post/:id', router_method_get.delete_post);
 app.get('/update_avatar/:id', router_method_get.update_avatar);
 app.get('/list_author', router_method_get.list_author);
+app.get('/contact', router_method_get.contact);
 
 //method post
 app.post('/login-sucsses', router_method_post.login_sucsses);
@@ -47,6 +48,7 @@ app.post('/save_new_post', router_method_post.save_new_post);
 app.post('/update_info_personel', router_method_post.update_info_personel);
 app.post('/comments', router_method_post.comments);
 app.post('/edit_post', router_method_post.edit_post);
+app.post('/submit_contact', router_method_post.submit_contact);
 
 //error: page not found 404/
 app.use((req, res, next) => {

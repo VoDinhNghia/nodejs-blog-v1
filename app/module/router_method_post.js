@@ -155,3 +155,18 @@ exports.comments = async(req, res) => {
     });
     res.redirect(`/info_post/${req.body.id_post}`);
 }
+
+exports.submit_contact = async(req, res) => {
+    let list_10_new_post = await db.query_select_limit('user', 'listpost', 'user.ID', 'listpost.ID_user', { 'listpost.privacy': 0 }, 10, 0, 'listpost.date_post', 'DESC');
+    let insert = await db.query_insert('contact', {
+        ID_user: req.session.ID,
+        email: req.body.email,
+        content: req.body.content,
+        type: 0,
+        date_contact: dateFormat(new Date(), "dd mm yyyy HH:MM:ss")
+    })
+    res.render('user/contact_reply', {
+        username: req.session.username,
+        data_10_post: list_10_new_post
+    })
+}

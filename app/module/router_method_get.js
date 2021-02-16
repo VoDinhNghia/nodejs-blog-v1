@@ -209,3 +209,13 @@ exports.list_author = async(req, res) => {
         })
     }
 }
+
+exports.contact = async(req, res) => {
+    if (!req.session.username || req.session.ID == 3) { res.redirect('/') } else {
+        let list_10_new_post = await db.query_select_limit('user', 'listpost', 'user.ID', 'listpost.ID_user', { 'listpost.privacy': 0 }, 10, 0, 'listpost.date_post', 'DESC');
+        res.render('user/contact', {
+            username: req.session.username,
+            data_10_post: list_10_new_post
+        })
+    }
+}
