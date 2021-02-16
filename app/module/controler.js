@@ -50,10 +50,10 @@ exports.join_2_table = async(table1, table2, id_table1, id_table2, json_where) =
 
 exports.query_select_andWhere = async(table, json_where, column, value) => {
     if (json_where != '') {
-        let arr_value = await knex(table).select().where(json_where).andWhere(column, 'LIKE', value + '%')
+        let arr_value = await knex(table).select().where(json_where).andWhere(column, 'LIKE', '%' + value + '%')
         return arr_value
     } else {
-        let arr_value = await knex(table).select().where(column, 'LIKE', value + '%')
+        let arr_value = await knex(table).select().where(column, 'LIKE', '%' + value + '%')
         return arr_value
     }
 }

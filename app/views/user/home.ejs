@@ -15,18 +15,18 @@
                     <div class="col-sm-8">
                         <% if(data.length){ 
                             for(var i = 0;i < data.length ;i++) { %>
-                            <h3>
+                            <h5>
                                 <a href="/info_post/<%= data[i].ID %>" class="text-info">
                                     <%= data[i].title %>
                                 </a>
-                            </h3>
+                            </h5>
 
                             <div class="d-flex flex-row comment-row m-t-0">
                                 <div class="comment-text w-100">
-                                    <h6 class="font-medium text-info">
+                                    <h7 class="font-medium text-info">
                                         <span class="text-danger"><%= data[i].date_post %></span>
                                         <a href="/info_personel/<%= data[i].ID_user %>" class="float-right"><img src="<%= data[i].avatar %>" alt="user" width="25" height="25" class="rounded-circle"> <%= data[i].name %></a>
-                                    </h6>
+                                    </h7>
                                 </div>
                             </div>
                             <% if(data[i].image != '') {%>

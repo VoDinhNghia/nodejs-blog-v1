@@ -49,6 +49,7 @@ app.post('/update_info_personel', router_method_post.update_info_personel);
 app.post('/comments', router_method_post.comments);
 app.post('/edit_post', router_method_post.edit_post);
 app.post('/submit_contact', router_method_post.submit_contact);
+app.post('/search', router_method_post.search);
 
 //error: page not found 404/
 app.use((req, res, next) => {

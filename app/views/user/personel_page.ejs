@@ -25,6 +25,13 @@
                                 <div class="comment-text w-100">
                                     <h6 class="font-medium text-info">
                                         <span class="text-danger"><%= data[i].date_post %></span>
+                                        <span class="text-danger float-right">
+                                            <% if(data[i].privacy == 1){ %>
+                                               private
+                                            <% } else {%>
+                                                publish
+                                                <%} %>
+                                        </span>
                                     </h6>
                                 </div>
                             </div><br>

@@ -170,3 +170,15 @@ exports.submit_contact = async(req, res) => {
         data_10_post: list_10_new_post
     })
 }
+
+exports.search = async(req, res) => {
+    let list_10_new_post = await db.query_select_limit('user', 'listpost', 'user.ID', 'listpost.ID_user', { 'listpost.privacy': 0 }, 10, 0, 'listpost.date_post', 'DESC');
+    let search_user = await db.query_select_andWhere('user', { level: 0 }, 'name', req.body.search);
+    let search_post = await db.query_select_andWhere('listpost', { privacy: 0 }, 'content', req.body.search);
+    res.render('user/search', {
+        username: req.session.username,
+        data_10_post: list_10_new_post,
+        data_user: search_user,
+        data_post: search_post
+    });
+}
