@@ -70,10 +70,12 @@ exports.personel_page = async(req, res) => {
     if (!req.session.username || req.session.ID == 3) {
         res.redirect('/');
     } else {
+        let data_user = await db.query_select('user', { ID: req.session.ID });
         let data = await db.join_2_table('user', 'listpost', 'user.ID', 'listpost.ID_user', { 'user.ID': req.session.ID });
         let data_s_l_c = await db.join_2_table('user', 'share_like_comment', 'user.ID', 'share_like_comment.ID_user', { 'share_like_comment.status_like': 0 });
         let avatar = await db.join_2_table('user', 'manager_avatar', 'user.ID', 'manager_avatar.ID_user', { 'user.ID': req.session.ID });
         res.render('user/personel_page', {
+            data_user: data_user,
             data: data,
             data_s_l_c: data_s_l_c,
             avatar: avatar
@@ -169,7 +171,7 @@ exports.new_post = async(req, res) => {
         let user_info = await db.query_select('user', { ID: req.session.ID });
         let avatar = await db.join_2_table('user', 'manager_avatar', 'user.ID', 'manager_avatar.ID_user', { 'user.ID': req.session.ID });
         res.render('user/new_post', {
-            data: user_info,
+            data_user: user_info,
             avatar: avatar
         });
     }
@@ -184,6 +186,7 @@ exports.info_personel1 = async(req, res) => {
     if (!req.session.username || req.session.ID == 3) {
         res.redirect('/');
     } else {
+        let data_user = await db.query_select('user', { ID: req.params.id });
         let data_s_l_c = await db.join_2_table('user', 'share_like_comment', 'user.ID', 'share_like_comment.ID_user', { 'share_like_comment.status_like': 0 });
         let data = await db.join_2_table('user', 'listpost', 'user.ID', 'listpost.ID_user', {
             'user.ID': req.params.id,
@@ -191,6 +194,7 @@ exports.info_personel1 = async(req, res) => {
         });
         let avatar = await db.join_2_table('user', 'manager_avatar', 'user.ID', 'manager_avatar.ID_user', { 'user.ID': req.params.id });
         res.render('user/info_personel', {
+            data_user: data_user,
             data: data,
             avatar: avatar,
             data_s_l_c: data_s_l_c
