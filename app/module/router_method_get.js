@@ -145,11 +145,12 @@ exports.like = async(req, res) => {
 
 exports.edit_post = async(req, res) => {
     if (!req.session.username || req.session.ID == 3) { res.redirect('/'); } else {
-        let user_info = await db.query_select('user', { ID: req.session.ID });
+        //let user_info = await db.query_select('user', { ID: req.session.ID });
+        let data_user = await db.query_select('user', { ID: req.session.ID });
         let data_post = await db.query_select('listpost', { ID: req.params.id });
         let avatar = await db.join_2_table('user', 'manager_avatar', 'user.ID', 'manager_avatar.ID_user', { 'user.ID': req.session.ID });
         res.render('user/edit_post', {
-            data: user_info,
+            data_user: data_user,
             data_post: data_post,
             avatar: avatar
         });
