@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost
--- Thời gian đã tạo: Th2 27, 2021 lúc 04:48 AM
+-- Thời gian đã tạo: Th3 08, 2021 lúc 04:41 AM
 -- Phiên bản máy phục vụ: 10.4.17-MariaDB
 -- Phiên bản PHP: 7.2.34
 
@@ -42,7 +42,8 @@ CREATE TABLE `contact` (
 
 INSERT INTO `contact` (`ID`, `ID_user`, `email`, `content`, `type`, `date_contact`) VALUES
 (1, 1, 'vodinhnghia85@gmail.com', 'Hello', 0, '16 02 2021 10:31:21'),
-(4, 1, 'vodinhnghia85@gmail.com', 'Hỏi thông tin admin.', 0, '27 02 2021 10:30:04');
+(4, 1, 'vodinhnghia85@gmail.com', 'Hỏi thông tin admin.', 0, '27 02 2021 10:30:04'),
+(5, 5, 'dinhnghia@gmail.com', 'Tôi muốn hỏi về vấn đề.', 0, '06 03 2021 10:18:13');
 
 -- --------------------------------------------------------
 
@@ -84,11 +85,14 @@ INSERT INTO `listpost` (`ID`, `ID_user`, `title`, `content`, `image`, `privacy`,
 (19, 1, 'Làng hoa nhộn nhịp đón Tết', 'Trở về những làng hoa những ngày này, không khí tất bật và rộn ràng. Các vườn hoa nhộn nhịp khách đến tham quan, mua hoa. Người trồng hoa nở nụ cười mãn nguyện sau một thời gian chăm bẵm khó khăn. Tết đến với các làng hoa sớm hơn ở các địa phương khác. \r\n(Trich: Baoquangngai.vn)', '/images/uploads/05-02-2021-xuanquangngai.jpg', 0, '05 02 2021 12:00:24'),
 (20, 1, 'Cảm xúc ngày cuối năm', 'Bóng chiều dần tắt, tiếng thời gian dường như đang nghiêng về một phía. Nỗi nhớ nhân đôi lên. Chiều đã bắt đầu lạnh, ngân ngấn gió về khiến tia nắng gẫy đôi. Những ngày cuối năm càng trôi nhanh hơn,lòng người hoang hoải…chùng hẳn lại.\r\n(source: https://tanvan.xyz/cam-xuc-ngay-cuoi-nam/)', '/images/uploads/06-02-2021-cuoi-nam.jpg', 0, '06 02 2021 09:10:33'),
 (22, 1, 'Code ngày cuối năm.', 'Tranh thu code12', '/images/uploads/14-02-2021-Screenshot from 2021-02-02 21-23-14.png', 0, '14 02 2021 20:35:05'),
-(24, 4, 'Chuyện vui lập trình', 'Ông bà ta thường có câu “Một nụ cười bằng mười thang thuốc bổ” vậy nên sau những giờ làm việc, học tập căng thẳng ta cũng nên tìm một thứ gì đó để giải trí một chút cho vui, giúp công việc đạt kết quả cao hơn. (trichs: https://quantrimang.com/tong-hop-nhung-truyen-cuoi-ba-dao-viet-ve-dan-it-164143)', '', 0, '16 02 2021 10:42:07'),
+(24, 4, 'Chuyện vui lập trình', 'Ông bà ta thường có câu “Một nụ cười bằng mười thang thuốc bổ” vậy nên sau những giờ làm việc, học tập căng thẳng ta cũng nên tìm một thứ gì đó để giải trí một chút cho vui, giúp công việc đạt kết quả cao hơn. (trichs: https://quantrimang.com/tong-hop-nhung-truyen-cuoi-ba-dao-viet-ve-dan-it-164143)', '/images/uploads/03-03-2021-Screenshot from 2021-02-16 19-02-39.png', 0, '16 02 2021 10:42:07'),
 (25, 4, 'test', '', '', 1, '16 02 2021 10:59:45'),
 (26, 1, 'Những ngày cuối tháng 2', 'Thế rồi tháng 2 lần nữa lại ghé qua đây và chở về một mùa xuân yêu kiều nồng đượm. Tháng hai là độ mùa xuân vừa chín, cây lá đâm chồi, cỏ hoa rợp nở. Nhưng như khúc tản văn mà tôi đã viết, có ai đứng giữa “mùa yêu” ấy mà chợt nhớ tới những thứ khốc khô và buồn bã không nhỉ? Có ai bước giữa mùa tháng hai mà chợt nhớ tới một chút cô đơn, một chút lạnh lùng, một nỗi sầu diệu vợi? Nếu có, thì bài viết hôm nay là dành cho bạn. Xin gửi tới mọi người chùm thơ tháng 2 tâm trạng, lãng mạn, cô đơn và buồn bã nhất mà tôi đã sưu tầm. Hy vọng rằng các bạn cũng sẽ thích những áng thơ tình tháng hai đầy cảm xúc này. Chúc các bạn có những phút giây thật tuyệt bên những vần thơ tình buồn tháng 2 hay!\r\n(Nguồn : https://ocuaso.com/tho-buon/tho-suu-tam/chum-tho-tinh-thang-2-hay.html)', '/images/uploads/27-02-2021-thang2.jpg', 0, '27 02 2021 10:24:31'),
 (27, 2, 'Tháng 2 ngày nhớ ai', 'Tháng 2 xuân về người có nhớ ...', '', 0, '27 02 2021 10:28:51'),
-(28, 4, 'Tháng 3 sắp tới rồi ', 'Hello tháng 3 ...', '/images/uploads/27-02-2021-sach_cafe.jpg', 0, '27 02 2021 10:31:30');
+(28, 4, 'Tháng 3 sắp tới rồi ', 'Hello tháng 3 ...', '/images/uploads/27-02-2021-sach_cafe.jpg', 0, '27 02 2021 10:31:30'),
+(29, 5, 'Code dạo tối thứ tư', 'Mỗi dòng code là một niềm vui.', '/images/uploads/06-03-2021-Screenshot from 2021-02-14 11-03-47.png', 0, '29 08 2021 20:44:02'),
+(31, 1, 'test', 'test1', '', 0, '04 03 2021 20:12:29'),
+(32, 5, 'Thứ 7 máu chảy về tim', '', '/images/uploads/06-03-2021-stt-thu-7-mau-chay-ve-tim-p.jpg', 0, '06 03 2021 10:03:33');
 
 -- --------------------------------------------------------
 
@@ -113,7 +117,9 @@ INSERT INTO `manager_avatar` (`ID`, `ID_user`, `image_update`, `date_update`) VA
 (11, 2, '/images/avatars/15-02-2021-106712292_979102752520719_7452376421506811259_n.jpg', '15 02 2021 19:24:03'),
 (12, 4, '/images/avatars/16-02-2021-15036301_834215213385325_8760571512419874799_n.jpg', '16 02 2021 10:40:42'),
 (13, 4, '/images/avatars/16-02-2021-18870731_709897545885580_1363768799_n.jpg', '16 02 2021 10:47:06'),
-(14, 1, '/images/avatars/22-02-2021-115711368_2677556569191767_8102767777774163125_n.jpg', '22 02 2021 14:01:14');
+(14, 1, '/images/avatars/22-02-2021-115711368_2677556569191767_8102767777774163125_n.jpg', '22 02 2021 14:01:14'),
+(15, 5, '/images/avatars/03-03-2021-2021-01-20-134634.jpg', '03 03 2021 20:42:59'),
+(16, 5, '/images/avatars/06-03-2021-photocat.jpg', '06 03 2021 10:05:03');
 
 -- --------------------------------------------------------
 
@@ -158,7 +164,19 @@ INSERT INTO `share_like_comment` (`ID`, `ID_post`, `ID_user`, `comment`, `type`,
 (24, 27, 1, 'like', 0, 0, '27 02 2021 10:29:35'),
 (25, 28, 4, 'like', 0, 0, '27 02 2021 10:31:36'),
 (26, 28, 1, 'like', 0, 0, '27 02 2021 10:32:22'),
-(27, 28, 1, 'Ảnh đẹp quá...', 1, 0, '27 02 2021 10:32:35');
+(27, 28, 1, 'Ảnh đẹp quá...', 1, 0, '27 02 2021 10:32:35'),
+(28, 17, 1, 'like', 0, 0, '27 02 2021 11:07:39'),
+(30, 31, 1, 'like', 0, 0, '06 03 2021 09:57:46'),
+(31, 31, 1, 'Hello thang 3', 1, 0, '06 03 2021 09:57:55'),
+(32, 29, 1, 'like', 0, 0, '06 03 2021 10:00:32'),
+(33, 29, 1, 'Good like', 1, 0, '06 03 2021 10:00:42'),
+(34, 29, 5, 'Ok man', 1, 0, '06 03 2021 10:00:57'),
+(35, 29, 5, 'like', 0, 0, '06 03 2021 10:01:01'),
+(36, 28, 5, 'like', 0, 0, '06 03 2021 10:01:24'),
+(37, 28, 5, 'Beautiful image', 1, 0, '06 03 2021 10:01:45'),
+(38, 32, 5, 'like', 0, 0, '06 03 2021 10:03:42'),
+(39, 26, 5, 'like', 0, 0, '06 03 2021 10:20:50'),
+(40, 26, 5, 'Beautiful girl', 1, 0, '06 03 2021 10:21:09');
 
 -- --------------------------------------------------------
 
@@ -184,10 +202,11 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`ID`, `name`, `pass`, `email`, `mobile`, `level`, `created_at`, `date_update`, `avatar`, `country`) VALUES
-(1, 'Võ Đình Nghĩa', '4a3396f4fcc5bffd73c6c2276f8b664e', 'vodinhnghia@gmail.com', 365572875, 0, '01 02 2021 21:28:52', '22 02 2021 14:01:27', '/images/avatars/15-02-2021-117335050_607034013346539_2891191939665063255_n.jpg', 'Bình Hiệp, Bình Sơn, Quảng Ngãi'),
+(1, 'Võ Đình Nghĩa', '4a3396f4fcc5bffd73c6c2276f8b664e', 'vodinhnghia@gmail.com', 365572875, 0, '01 02 2021 21:28:52', '06 03 2021 09:58:42', '/images/avatars/15-02-2021-117335050_607034013346539_2891191939665063255_n.jpg', 'Bình Hiệp, Bình Sơn, Quảng Ngãi'),
 (2, 'Võ Thị Tuyết Linh', '43fb94da1177864aa7a9fbb7f072b1e9', 'vothituyetlinh99@gmail.com', 372129501, 0, '04 02 2021 20:42:13', '27 02 2021 10:26:05', '/images/avatars/15-02-2021-106712292_979102752520719_7452376421506811259_n.jpg', 'Phu Yen, Viet Nam'),
 (3, 'Admin', 'b67e6428abfd27b95dad3a8ca26f38a7', 'admin123@gmail.com', 365572875, 1, '12 02 2021 08:16:31', '', '', 'Việt Nam'),
-(4, 'Đình Nghĩa', '4a3396f4fcc5bffd73c6c2276f8b664e', 'vodinhnghia@gmail.com', 365572875, 0, '16 02 2021 10:36:25', '27 02 2021 10:32:01', '/images/avatars/16-02-2021-18870731_709897545885580_1363768799_n.jpg', 'Việt Nam');
+(4, 'Đình Nghĩa', '4a3396f4fcc5bffd73c6c2276f8b664e', 'vodinhnghia@gmail.com', 365572875, 0, '16 02 2021 10:36:25', '27 02 2021 10:32:01', '/images/avatars/16-02-2021-18870731_709897545885580_1363768799_n.jpg', 'Việt Nam'),
+(5, 'Nghĩa Bình Hiệp', '4a3396f4fcc5bffd73c6c2276f8b664e', 'dinhnghia@gmail.com', 365572875, 0, '03 03 2021 19:55:44', '06 03 2021 10:18:56', '/images/avatars/06-03-2021-photocat.jpg', 'Bình Hiệp, Bình Sơn, Quảng Ngãi');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -241,7 +260,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT cho bảng `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `ID` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `getpass`
@@ -253,25 +272,25 @@ ALTER TABLE `getpass`
 -- AUTO_INCREMENT cho bảng `listpost`
 --
 ALTER TABLE `listpost`
-  MODIFY `ID` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `ID` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT cho bảng `manager_avatar`
 --
 ALTER TABLE `manager_avatar`
-  MODIFY `ID` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `ID` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT cho bảng `share_like_comment`
 --
 ALTER TABLE `share_like_comment`
-  MODIFY `ID` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `ID` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT cho bảng `user`
 --
 ALTER TABLE `user`
-  MODIFY `ID` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
